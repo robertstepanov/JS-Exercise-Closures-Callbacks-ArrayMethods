@@ -88,9 +88,10 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
  */
-function processSum(numberList, callback) {
-  let sum = numberList.length;
-  return callback(sum);
+function processSum(numberList) {
+  return numberList.reduce(function(num1, num2) {
+  return num1 + num2;
+  });
 }
 
 /**
@@ -111,8 +112,11 @@ function processSum(numberList, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
  */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  
+  return callback(num1, num2);
+  const multiply = (num1, num2) => (num1 * num2);
+
 }
 
 /**
@@ -180,8 +184,14 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
  */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  const fullName = [];
+
+  runners.forEach(function(runners) {
+    fullName.push(`${runners.last_name}, ${runners.first_name}`);
+  });
+
+  return fullName;
 }
 
 /**
