@@ -160,8 +160,12 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
  */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(arr, callback) {
+  let unique = arr.filter(function(item, index) {
+    return arr.indexOf(item) >= index;
+  });
+
+  return callback(unique.length);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -276,12 +280,6 @@ function counterMaker() {
   }
 
   return counter;
-  // BROKEN CODE STARTS
-  // const count = 0;
-  // function counter() {
-  //   ++count;
-  // }
-  // BROKEN CODE ENDS
 }
 
 /**
@@ -304,9 +302,28 @@ function counterMaker() {
  * counter() // should return 0
  * etc
  */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+
+function counterMakerWithLimit(limit) {
+  let count = -1;
+  return function counter() {
+    if (count === limit) {
+      count = -1;
+    }
+    return ++count;
+  };
 }
+// function counterMakerWithLimit(max) {
+//   let count = 0;
+
+//   function counter() {
+//     if (count === max) {
+//       return (count = 0);
+//     } else {
+//       return count++;
+//     }
+//   }
+//   return counter;
+// }
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
